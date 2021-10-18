@@ -1,0 +1,33 @@
+on recupere le fichier level02.pcap present dans le home de level02 avec la commande:
+scp scp://level02@192.168.56.3:4242/level02.pcap level02.pcap
+
+en cherchant sur internet comment lire un fichier pcap je trouve la commande tcpick
+et avec la commande:
+tcpick -C -yU -r level02.pcap
+
+je trouve:
+Password: 
+f
+t
+_
+w
+a
+n
+d
+r
+<7f>
+<7f>
+<7f>
+N
+D
+R
+e
+l
+<7f>
+L
+0
+L
+
+comme les <7f> sont des delete cela donne le mot de passe "ft_waNDReL0L"
+
+flag02:ft_waNDReL0L

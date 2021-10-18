@@ -1,0 +1,14 @@
+find / -readable -user flag00 2> /dev/null
+    find 2 file:
+    /usr/sbin/john
+    /rofs/usr/sbin/john
+
+cat /usr/sbin/john
+    cdiiddwpgswtgt
+
+ca resemble a un mot de pass
+comme il n'y a que des lettres ca resemble a un chiffrement caesar
+avec le site https://www.dcode.fr/caesar-cipher on trouve la cle 15 et la phrase nottoohardhere
+qui est le mot de pass de flag00
+
+flag00:nottoohardhere

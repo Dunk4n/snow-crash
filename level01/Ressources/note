@@ -1,0 +1,19 @@
+find / -readable -type d > /tmp/finded 2> /dev/null
+
+quand on fait un search sur pass on tombe sur le fichier /etc/passwd
+qui est un fichier qui contient les mot de pass des users
+
+on voit que le hash du mot de pass de flag01 n'est pas shadow comme celui de flag00 avec un x
+flag00:x:3000:3000::/home/flag/flag00:/bin/bash
+flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+
+on recupere le fichier avec la commande:
+scp scp://level00@192.168.56.3:4242//etc/passwd passwd
+
+et avec le programe "John the Ripper password cracker" et la commande:
+john passwd --show
+
+on trouve le mot de pass de flag01:
+flag01:abcdefg:3001:3001::/home/flag/flag01:/bin/bash
+
+flag01:abcdefg
