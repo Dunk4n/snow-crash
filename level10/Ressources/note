@@ -1,0 +1,12 @@
+$> ./level10
+./level10 file host
+	sends file to host if you have access to it
+
+$> ./level10 token host
+You don't have access to token
+
+$> strings level10
+open
+access
+
+

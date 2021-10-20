@@ -1,0 +1,12 @@
+le fichier level06 execute le fichier php level06.php
+
+level06.php recupere le contenue du fichier passe en argument
+
+level06.php utilise sur le contenue du fichier preg_replace avec /e qui evalue la string dans le deuxieme argument
+preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a)
+
+on cree un fichier qui match le regex en premier argument de preg_replace et on met dans la partie (.*) du regex qui va remplace \2 du deuxieme argument de preg_replace, une variable ${} qui va execute une commande shell avec les execution operande ``
+echo -n '[x ${`getflag`}]' > /tmp/a
+
+on fait execute getflag au program level06 qui a les droit de flag06
+./level06 /tmp/a

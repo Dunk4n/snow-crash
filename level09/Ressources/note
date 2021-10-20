@@ -1,0 +1,33 @@
+il y a un fichier token et un program level09
+
+le fichier token contient 25 character soit la taille d'un flag mais il y a des characters qui ne peuvent pas etre dans un flag
+
+le program level09 accept 1 argument et renvoie une version modifie de l'argument passe en parametre
+
+$> ./level09 hello
+hfnos
+$> ./level09 aaaaa
+abcde
+
+on en deduis que le progrem level09 ajoue a chaque character ca position dans la string
+soit 'a' a la position 0 devient 'a'
+soit 'a' a la position 1 devient 'b'
+soit 'a' a la position 2 devient 'c'
+soit 'a' a la position 3 devient 'd'
+soit 'a' a la position 4 devient 'e'
+
+dans le binaire level09 on trouve la string "You should not reverse this"
+$> strings level09
+You should not reverse this
+
+on cree un program qui fait l'inverse de level09 soit enleve a chaque character ca position dans la string
+
+en passant le contenue du fichier token dans notre program on obtient:
+f3iji1ju5yuevaus41q1afiuq
+qui est le password de flag09
+
+$> su flag09
+Password:
+Don't forget to launch getflag !
+$> getflag
+s5cAJpM8ev6XHw998pRWG728z

