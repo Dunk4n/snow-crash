@@ -1,10 +1,10 @@
-find / -readable -user flag00 2> /dev/null
-    find 2 file:
-    /usr/sbin/john
-    /rofs/usr/sbin/john
+on cherche des fichier de flag00 qu'on peut lire
+$> find / -readable -user flag00 2> /dev/null
+/usr/sbin/john
+/rofs/usr/sbin/john
 
-cat /usr/sbin/john
-    cdiiddwpgswtgt
+$> cat /usr/sbin/john
+cdiiddwpgswtgt
 
 ca resemble a un mot de pass
 comme il n'y a que des lettres ca resemble a un chiffrement caesar

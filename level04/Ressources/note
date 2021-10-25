@@ -1,6 +1,3 @@
-upload le program level04.pl sur localhost:4747
-curl -i --upload-file 'level04.pl' "localhost:4747"
-
 le program level04.pl prend les param d'une url:
     use CGI qw{param};
 
