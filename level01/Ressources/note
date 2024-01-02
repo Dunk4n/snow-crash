@@ -1,7 +1,7 @@
 find / -readable -type d > /tmp/finded 2> /dev/null
 
 quand on fait un search sur pass on tombe sur le fichier /etc/passwd
-qui est un fichier qui contient les mot de pass des users
+qui est un fichier qui contient les mot de passe des users
 
 on voit que le hash du mot de pass de flag01 n'est pas shadow comme celui de flag00 avec un x
 flag00:x:3000:3000::/home/flag/flag00:/bin/bash
